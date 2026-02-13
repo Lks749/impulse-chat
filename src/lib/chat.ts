@@ -6,7 +6,7 @@ export interface Message {
 
 export async function getAIResponse(userMessage: string): Promise<string> {
   try {
-    const response = await fetch("https://n8n-latest-dftn.onrender.com/webhook-test/59edb265-54b5-49ff-843e-7311d4a03f6b", {
+    const response = await fetch("https://n8n-latest-dftn.onrender.com/webhook/59edb265-54b5-49ff-843e-7311d4a03f6b", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
