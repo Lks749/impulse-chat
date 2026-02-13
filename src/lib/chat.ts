@@ -22,7 +22,7 @@ export async function getAIResponse(userMessage: string): Promise<string> {
 
     const data = await response.json();
 
-    return data.response; // precisa bater com o JSON que o n8n retorna
+    return data.output; // precisa bater com o JSON que o n8n retorna
   } catch (error) {
     console.error("Erro ao comunicar com n8n:", error);
     return "Erro ao conectar com o servidor.";
