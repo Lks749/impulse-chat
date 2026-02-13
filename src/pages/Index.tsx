@@ -44,7 +44,7 @@ const Index = () => {
             {isLoading && (
               <div className="flex justify-start mb-3">
                 <div className="bg-secondary text-muted-foreground rounded-2xl rounded-bl-md px-4 py-2.5 text-sm">
-                  Digitando...
+                  Pensando...
                 </div>
               </div>
             )}
