@@ -6,7 +6,7 @@ import { getAIResponse, type Message } from "@/lib/chat";
 
 const Index = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { id: "welcome", content: "Olá! Eu sou o Impulse AI. Como posso ajudar?", role: "ai" },
+    { id: "welcome", content: "Inicie a conversa digitando no campo abaixo:", role: "ai" },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
