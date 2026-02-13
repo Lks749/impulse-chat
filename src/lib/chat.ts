@@ -4,16 +4,27 @@ export interface Message {
   role: "user" | "ai";
 }
 
-const simulatedResponses = [
-  "Olá! Como posso ajudar você hoje?",
-  "Essa é uma ótima pergunta! Deixe-me pensar...",
-  "Entendi. Posso te ajudar com isso.",
-  "Interessante! Conte-me mais sobre o que você precisa.",
-  "Claro, estou aqui para ajudar!",
-];
+export async function getAIResponse(userMessage: string): Promise<string> {
+  try {
+    const response = await fetch("https://n8n-latest-dftn.onrender.com/webhook-test/59edb265-54b5-49ff-843e-7311d4a03f6b", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: userMessage,
+      }),
+    });
 
-/** Simulates an AI response. Replace with a real API call later. */
-export async function getAIResponse(_userMessage: string): Promise<string> {
-  await new Promise((r) => setTimeout(r, 800 + Math.random() * 700));
-  return simulatedResponses[Math.floor(Math.random() * simulatedResponses.length)];
+    if (!response.ok) {
+      throw new Error("Erro na requisição ao n8n");
+    }
+
+    const data = await response.json();
+
+    return data.response; // precisa bater com o JSON que o n8n retorna
+  } catch (error) {
+    console.error("Erro ao comunicar com n8n:", error);
+    return "Erro ao conectar com o servidor.";
+  }
 }
